@@ -1,0 +1,7 @@
+node_modules/
+.env
+Internships/
+token.json
+college_internship_email_automation.md
+unprocessed_emails.json
+processed_emails.json
