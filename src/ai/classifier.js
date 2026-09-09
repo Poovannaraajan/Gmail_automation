@@ -23,7 +23,10 @@ if there is a mail with both btech and ( mtech or mca or both) that mail is elig
 Return ONLY valid JSON in this format:
 {
   "is_internship": true,
-  "is_cs_eligible": true
+  "is_cs_eligible": true,
+  "company_name": "Extracted company name (or null)",
+  "role": "Extracted role title (or null)",
+  "jd_summary": "Extracted short JD summary (max 3 sentences, or null)"
 }
 
 Do not include markdown or additional explanation.

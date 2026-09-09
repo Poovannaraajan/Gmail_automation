@@ -97,6 +97,23 @@ async function main() {
           } else {
             console.log("No PDF/DOC attachments found in this email.");
           }
+
+          // Save JD and Role to text file if available
+          if (classification.role || classification.jd_summary) {
+            const jdContent = `Company: ${classification.company_name || 'N/A'}\nRole: ${classification.role || 'N/A'}\n\nJob Description Summary:\n${classification.jd_summary || 'N/A'}\n`;
+            const folderPath = process.env.INTERNSHIP_FOLDER || 'Internships';
+            
+            try {
+              await fs.mkdir(folderPath, { recursive: true });
+            } catch (e) {
+              if (e.code !== 'EEXIST') throw e;
+            }
+            
+            const safeCompanyName = (classification.company_name || 'Unknown_Company').replace(/[^a-zA-Z0-9.\-_]/g, '_');
+            const jdFilePath = path.join(process.cwd(), folderPath, `${safeCompanyName}_JD.txt`);
+            await fs.writeFile(jdFilePath, jdContent);
+            console.log(`Saved Job Description summary to ${jdFilePath}`);
+          }
         } else {
           console.log("Email is NOT a valid CSE internship opportunity.");
         }
