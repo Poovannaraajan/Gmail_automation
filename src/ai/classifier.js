@@ -18,7 +18,8 @@ Determine:
 1. Is this email related to an internship registration/recruitment opportunity?
 2. Is B.Tech Computer Science / CSE eligible?
    (Note: CSE, Computer Science, IT, and general B.Tech are considered eligible. Mechanical/Civil only are not).
-
+No M.Techs only or No MCA only
+if there is a mail with both btech and ( mtech or mca or both) that mail is eligible. 
 Return ONLY valid JSON in this format:
 {
   "is_internship": true,

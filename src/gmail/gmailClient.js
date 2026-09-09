@@ -3,8 +3,14 @@ const { google } = require('googleapis');
 /**
  * Fetches recent unread emails that match the query
  */
-async function fetchRecentEmails(auth, query = 'newer_than:1d', maxResults = 10) {
+async function fetchRecentEmails(auth, query = null, maxResults = 500) {
   const gmail = google.gmail({ version: 'v1', auth });
+
+  if (!query) {
+    // Calculate exactly 24 hours ago in Unix epoch seconds
+    const twentyFourHoursAgo = Math.floor(Date.now() / 1000) - (24 * 60 * 60);
+    query = `after:${twentyFourHoursAgo}`;
+  }
 
   const response = await gmail.users.messages.list({
     userId: 'me',
