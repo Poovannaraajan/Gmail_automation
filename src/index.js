@@ -100,7 +100,8 @@ async function main() {
 
           // Save JD and Role to text file if available
           if (classification.role || classification.jd_summary) {
-            const jdContent = `Company: ${classification.company_name || 'N/A'}\nRole: ${classification.role || 'N/A'}\n\nJob Description Summary:\n${classification.jd_summary || 'N/A'}\n`;
+            const skillsString = (classification.skills && classification.skills.length > 0) ? classification.skills.join(', ') : 'N/A';
+            const jdContent = `Company: ${classification.company_name || 'N/A'}\nRole: ${classification.role || 'N/A'}\nSkills: ${skillsString}\n\nJob Description Summary:\n${classification.jd_summary || 'N/A'}\n`;
             const folderPath = process.env.INTERNSHIP_FOLDER || 'Internships';
             
             try {

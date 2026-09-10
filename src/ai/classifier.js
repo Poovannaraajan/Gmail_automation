@@ -26,6 +26,7 @@ Return ONLY valid JSON in this format:
   "is_cs_eligible": true,
   "company_name": "Extracted company name (or null)",
   "role": "Extracted role title (or null)",
+  "skills": ["skill1", "skill2", "skill3"],
   "jd_summary": "Extracted short JD summary (max 3 sentences, or null)"
 }
 
