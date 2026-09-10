@@ -41,7 +41,7 @@ flowchart TD
 - **Automated Email Scraping**: Continuously monitors a Gmail inbox for placement-related emails, strictly querying the last 24-hours of emails via dynamic timestamps to prevent rate limiting.
 - **Local Document Parsing**: Uses native Node.js libraries (`pdf-parse`, `mammoth`) to silently rip text from downloaded `.pdf` and `.docx` attachments without needing external conversion APIs.
 - **AI-Powered Data Extraction**: Leverages the Groq API (running `llama` / `qwen` models) for blazing-fast zero-shot classification to verify B.Tech CSE eligibility, extract the hiring company, the specific job role, and an array of required tech skills.
-- **Smart State Caching**: Maintains local `processed_emails.json` and `bi_data.json` registries. It strictly avoids reprocessing previously seen emails or documents, saving LLM tokens and execution time.
+- **Amazon S3 Integration**: Automatically synchronizes extracted data to an AWS S3 bucket, creating a reliable and highly available storage backend optimized for autonomous, scheduled deployment via EC2 Cron jobs.
 - **Modern React Frontend**: A completely decoupled Vite + React application that renders interactive Doughnut and Bar charts (via `react-chartjs-2`), providing instant visualization of hiring trends and "hot skills".
 
 ## 🛠️ Tech Stack
